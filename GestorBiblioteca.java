@@ -1,3 +1,9 @@
+//  @ Ejercicio 3
+//  @ File Name : Gestor Biblioteca.java
+//  @ Date : 31/08/2024
+//  @ Author : Alejandro Manuel Jerez Melgar 24678
+//
+
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -77,6 +83,10 @@ public class GestorBiblioteca {
         System.out.println("Gracias por preferirnos, hasta la proxima.");
     }
 
+    /**
+     * 
+     * @return eleccion menu principal
+     */
     public static int menu(){
         //Se inicializan las variables
         //Se crean los objetos
@@ -106,6 +116,10 @@ public class GestorBiblioteca {
 
     }
 
+    /**
+     * 
+     * @return Eleccion genero del libro
+     */
     public static String menu2(){
         //Se inicializan las variables
         //Se crean los objetos
@@ -148,6 +162,10 @@ public class GestorBiblioteca {
 
     }
 
+    /**
+     * 
+     * @return verifica que el codigo sea solo numeros
+     */
     public static String code(){
         //Se inicializan las variables
         //Se crean los objetos
@@ -174,6 +192,10 @@ public class GestorBiblioteca {
 
     }
 
+    /**
+     * 
+     * @param funcionamiento
+     */
     public static void mostrarBibliotecas(Funcionamiento funcionamiento) {
         ArrayList<Biblioteca> bibliotecas = funcionamiento.getBibliotecas();
         for (int i = 0; i < bibliotecas.size(); i++) {
@@ -182,6 +204,11 @@ public class GestorBiblioteca {
         }
     }
 
+    /**
+     * 
+     * @param funcionamiento
+     * @return La biblioteca elegida
+     */
     public static String seleccionarBibliotecaA(Funcionamiento funcionamiento) {
         Scanner teclado=new Scanner(System.in);
         
@@ -212,6 +239,11 @@ public class GestorBiblioteca {
         return eleccionUsuarioS;
     }
 
+    /**
+     * 
+     * @param funcionamiento
+     * @return la bibliote seleccionada
+     */
     public static Biblioteca seleccionarBibliotecaB(Funcionamiento funcionamiento) {
         Scanner teclado=new Scanner(System.in);
         String eleccionUsuarioS="";
@@ -241,6 +273,10 @@ public class GestorBiblioteca {
         return biblioteca;
     }
 
+    /**
+     * 
+     * @param biblioteca
+     */
     public static void mostrarLibros(Biblioteca biblioteca) {
         ArrayList<Libro> libros = biblioteca.getLibros();
         for (int i = 0; i < libros.size(); i++) {
@@ -249,6 +285,12 @@ public class GestorBiblioteca {
         }
     }
     
+    /**
+     * 
+     * @param biblioteca
+     * @param funcionamiento
+     * @return libro seleccionado
+     */
     public static Libro seleccionarLibro(Biblioteca biblioteca, Funcionamiento funcionamiento){
         // Leer la selección del usuario
         Scanner teclado=new Scanner(System.in);
@@ -277,6 +319,10 @@ public class GestorBiblioteca {
         return libro;
     }
 
+    /**
+     * 
+     * @param biblioteca
+     */
     public static void mostrarUsuarios(Biblioteca biblioteca) {
         ArrayList<Usuario> usuarios = biblioteca.getUsuarios();
         for (int i = 0; i < usuarios.size(); i++) {
@@ -285,6 +331,12 @@ public class GestorBiblioteca {
         }
     }
     
+    /**
+     * 
+     * @param biblioteca
+     * @param funcionamiento
+     * @return usuario seleccionado
+     */
     public static Usuario seleccionarUsuario(Biblioteca biblioteca, Funcionamiento funcionamiento){
         // Leer la selección del usuario
         Scanner teclado=new Scanner(System.in);
