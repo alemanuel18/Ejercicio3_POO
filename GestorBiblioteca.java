@@ -10,9 +10,12 @@ public class GestorBiblioteca {
        
         String nombreB="";
         String nombreL="";
+        
 
         Funcionamiento funcionamiento=new Funcionamiento();
        
+        Biblioteca biblioteca= new Biblioteca();
+
         Date fechaActual = new Date();
         SimpleDateFormat formateador = new SimpleDateFormat("MMyyyydd");
         String fecha = formateador.format(fechaActual);
@@ -52,7 +55,18 @@ public class GestorBiblioteca {
                 }
                 eleccion=menu();
             }else if (eleccion==4) {
-                
+                if (funcionamiento.getBibliotecas().isEmpty()) {
+                    System.out.println("Debe existir almenos una biblioteca para agregar un prestamo");
+                }else{
+                    biblioteca= seleccionarBibliotecaB(funcionamiento);
+                    if (biblioteca.getLibros().isEmpty() && biblioteca.getUsuarios().isEmpty()) {
+                        System.out.println("Esta biblioteca no tiene libros o usuarios registrados");
+                    }else{
+                        nombreB=biblioteca.getNombre();
+                        funcionamiento.agregarPrestamoBiblioteca(nombreB, funcionamiento.crearPrestamo(funcionamiento.codigoPrestamo(fecha), seleccionarLibro(biblioteca, funcionamiento), seleccionarUsuario(biblioteca, funcionamiento)));
+                        System.out.println("Se a registrado el prestamo");
+                    }
+                }
                 eleccion=menu();
             }else if (eleccion==5) {
                 
@@ -203,7 +217,7 @@ public class GestorBiblioteca {
         String eleccionUsuarioS="";
         int eleccionUsuarioi=0;
         boolean verificador=false;
-        Biblioteca biblioteca= funcionamiento.crearAgregarBiblioteca(eleccionUsuarioS);
+        Biblioteca biblioteca= new Biblioteca();
         ArrayList<Biblioteca> bibliotecas = funcionamiento.getBibliotecas();
 
         
@@ -241,7 +255,7 @@ public class GestorBiblioteca {
         String eleccionUsuarioS="";
         int eleccionUsuarioi=0;
         boolean verificador=false;
-        Libro libro= funcionamiento.creaLibro(eleccionUsuarioS, eleccionUsuarioS, eleccionUsuarioS);
+        Libro libro= new Libro();
         ArrayList<Libro> libros = biblioteca.getLibros();
         while (verificador==false) {
             System.out.println("\nSeleccione el número del libro\n");
@@ -277,7 +291,7 @@ public class GestorBiblioteca {
         String eleccionUsuarioS="";
         int eleccionUsuarioi=0;
         boolean verificador=false;
-        Usuario usuario= funcionamiento.creaUsuario(eleccionUsuarioS, eleccionUsuarioS);
+        Usuario usuario= new Usuario();
         ArrayList<Usuario> usuarios = biblioteca.getUsuarios();
         while (verificador==false) {
             System.out.println("\nSeleccione el número del usuario\n");

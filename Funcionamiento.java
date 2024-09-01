@@ -25,7 +25,7 @@ public class Funcionamiento {
         return nuevaBiblioteca;
     }
 
-    public String codigoProyecto(String fecha){
+    public String codigoPrestamo(String fecha){
         String codigoBoleto=fecha+contador;
         contador++;
         return codigoBoleto;
