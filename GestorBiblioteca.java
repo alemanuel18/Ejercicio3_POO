@@ -69,7 +69,7 @@ public class GestorBiblioteca {
                 }
                 eleccion=menu();
             }else if (eleccion==5) {
-                
+                funcionamiento.mostrarEstadisticas();
                 eleccion=menu();
             }
             

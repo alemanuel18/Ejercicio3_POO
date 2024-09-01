@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Funcionamiento {
     private ArrayList<Biblioteca>bibliotecas=new ArrayList<>();
@@ -53,6 +55,51 @@ public class Funcionamiento {
                 biblioteca.agregarprestamo(prestamo);
             }
         }
+    }
+
+    public String mostrarEstadisticas() {
+        int totalLibrosPrestados = 0;
+        Map<String, Integer> generoContador = new HashMap<>();
+        Map<String, Integer> libroContador = new HashMap<>();
+        
+        for (Biblioteca biblioteca : bibliotecas) {
+            for (Prestamo prestamo : biblioteca.getPrestamos()) {
+                totalLibrosPrestados++;
+
+                // Contar géneros
+                String genero = prestamo.getLibro().getGenero();
+                generoContador.put(genero, generoContador.getOrDefault(genero, 0) + 1);
+
+                // Contar libros
+                String nombreLibro = prestamo.getLibro().getNombre();
+                libroContador.put(nombreLibro, libroContador.getOrDefault(nombreLibro, 0) + 1);
+            }
+        }
+
+        // Determinar el género más solicitado
+        String generoMasSolicitado = "";
+        int maxGenero = 0;
+        for (Map.Entry<String, Integer> entry : generoContador.entrySet()) {
+            if (entry.getValue() > maxGenero) {
+                maxGenero = entry.getValue();
+                generoMasSolicitado = entry.getKey();
+            }
+        }
+
+        // Determinar el libro más prestado
+        String libroMasPrestado = "";
+        int maxLibro = 0;
+        for (Map.Entry<String, Integer> entry : libroContador.entrySet()) {
+            if (entry.getValue() > maxLibro) {
+                maxLibro = entry.getValue();
+                libroMasPrestado = entry.getKey();
+            }
+        }
+
+        // Construir la cadena de resultado
+        String resultado = "Total de libros prestados: " + totalLibrosPrestados + "\nGénero más solicitado: " + generoMasSolicitado + "\nLibro más prestado: " + libroMasPrestado;
+
+        return resultado;
     }
 
     public ArrayList<Biblioteca> getBibliotecas() {
