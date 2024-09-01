@@ -59,7 +59,7 @@ public class GestorBiblioteca {
                     System.out.println("Debe existir almenos una biblioteca para agregar un prestamo");
                 }else{
                     biblioteca= seleccionarBibliotecaB(funcionamiento);
-                    if (biblioteca.getLibros().isEmpty() && biblioteca.getUsuarios().isEmpty()) {
+                    if (biblioteca.getLibros().isEmpty() || biblioteca.getUsuarios().isEmpty()) {
                         System.out.println("Esta biblioteca no tiene libros o usuarios registrados");
                     }else{
                         nombreB=biblioteca.getNombre();
@@ -69,7 +69,7 @@ public class GestorBiblioteca {
                 }
                 eleccion=menu();
             }else if (eleccion==5) {
-                funcionamiento.mostrarEstadisticas();
+                System.out.println(funcionamiento.mostrarEstadisticas());
                 eleccion=menu();
             }
             
@@ -131,7 +131,7 @@ public class GestorBiblioteca {
                         verificador=true;
                     }
                     else if (eleccionUsuarioi==2) {
-                        eleccionUsuarioS="Mistario";
+                        eleccionUsuarioS="Misterio";
                         verificador=true;
                     }
                     else if (eleccionUsuarioi==3) {
@@ -295,7 +295,7 @@ public class GestorBiblioteca {
         ArrayList<Usuario> usuarios = biblioteca.getUsuarios();
         while (verificador==false) {
             System.out.println("\nSeleccione el número del usuario\n");
-            mostrarLibros(biblioteca);
+            mostrarUsuarios(biblioteca);
             eleccionUsuarioS=teclado.nextLine();
 
             try { 
