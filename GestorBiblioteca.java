@@ -39,9 +39,17 @@ public class GestorBiblioteca {
                     funcionamiento.agregarLibroBiblioteca(nombreB, funcionamiento.creaLibro(nombreL, code(), menu2()));
                     System.out.println("Se a creado el libro");
                 }
-                
                 eleccion=menu();
             }else if (eleccion==3) {
+                if (funcionamiento.getBibliotecas().isEmpty()) {
+                    System.out.println("Debe existir almenos una biblioteca para agregar un usuario.");
+                }else{
+                    nombreB=seleccionarBibliotecaA(funcionamiento);
+                    System.out.println("Ingrese el nombre del usuario");
+                    nombreL=teclado.nextLine();
+                    funcionamiento.agregarUsuarioBiblioteca(nombreB, funcionamiento.creaUsuario(nombreL, code()));
+                    System.out.println("Se a creado el usuario");
+                }
                 eleccion=menu();
             }else if (eleccion==4) {
                 
